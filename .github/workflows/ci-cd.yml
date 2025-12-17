@@ -29,4 +29,5 @@ jobs:
           context: ./TodoApi          
           file: ./TodoApi/Dockerfile  
           push: true                  
-          tags: ${{ secrets.XMEDLI309 }}/todoapi:latest
+          tags: ${{ secrets.xmedli309 }}/todoapi:latest
+
