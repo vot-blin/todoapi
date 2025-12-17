@@ -1,0 +1,39 @@
+﻿---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todoapi-deployment
+  labels:
+    app: todoapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: todoapi
+  template:
+    metadata:
+      labels:
+        app: todoapi
+    spec:
+      containers:
+        - name: todo-api
+          image: todo-api:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_URLS
+              value: "http://+:8080"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todoapi-service
+spec: 
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30080
+  selector: 
+    app: todoapi  
