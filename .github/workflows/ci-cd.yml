@@ -2,7 +2,7 @@
 
 on:
   push:
-    branches: [ "main" ]  
+    branches: [ "main" ]
 
 jobs:
   build-and-push:
@@ -19,14 +19,13 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: xmedli309         
+          password: ${{ secrets.xmedli309 }}  
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: ./TodoApi          
-          file: ./TodoApi/Dockerfile  
-          push: true                  
-          tags: ${{ secrets.xmedli309 }}/todoapi:latest
-
+          context: ./TodoApi
+          file: ./TodoApi/Dockerfile
+          push: true
+          tags: xmedli309/todoapi:latest  
